@@ -13,6 +13,7 @@ let accountState;
 accountEmail="test@gmail.com";
 accountPassword="21212121";
 accountCity="blr";
+
 /*
 prefer not to use var
 bcoz of issues in block scope and functional scope
