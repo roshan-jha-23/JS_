@@ -48,3 +48,27 @@ console.log("Hello World!");
 myFunction();
 
 console.log(typeof bigNum);
+
+
+//+++++++++++++++++++++++STACK && HEAP+++++++++
+// in primitve u get a copy of that  value when you pass it to function
+let myHomeName="JUJU";
+let myOfficalName = myHomeName;
+myOfficalName="Roshan"
+
+console.log(myHomeName);
+console.log(myOfficalName);
+
+//in no primitve you get a reference ek ka change karoge to dusra bhi effect hoga
+let userOne={
+    email:"user1@gmail.com",
+    upId:"user1@ybl"
+}
+let userTwo=userOne;
+userTwo.email="User2@gmail.com";
+console.log(userOne);
+console.log(userTwo);
+//output
+// { email: 'User2@gmail.com', upId: 'user1@ybl' }
+// { email: 'User2@gmail.com', upId: 'user1@ybl' }
+//you see here both changed.
