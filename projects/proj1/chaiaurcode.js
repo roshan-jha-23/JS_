@@ -5,9 +5,9 @@ const body=document.querySelector( 'body' );
 
 
 buttons.forEach((btn)=>{
-   console.log(btn);
+//    console.log(btn);
    btn.addEventListener('click',(event)=>{
-      console.log(event);
+    //   console.log(event);
       if(event.target==='grey'){
         body.style.backgroundColor=e.target.value;
       }
