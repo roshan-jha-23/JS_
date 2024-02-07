@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github API Card</title>
+    <style>
+        body{
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            color: #e0d9d9; /* Change color to black for better visibility */
+            background-color: #0f0202; /* Change background color to white */
+        }
+
+        .card h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 16px;
+            line-height: 1.5;
+            color:green
+        }
+  .avatar {
+        width: 80px; /* Adjust the width to your preference */
+        height: 80px; /* Adjust the height to your preference */
+        border-radius: 50%;
+        margin-bottom: 10px;
+        object-fit: cover; /* Maintain aspect ratio and crop as necessary */
+        overflow: hidden; /* Hide any content that overflows the container */
+        display: block; /* Ensure the image behaves as a block element */
+    }
+    </style>
+</head>
+<body style="background-color: #212121; color:#fff;">
+    
+</body>
+<script>
+    const xhr = new XMLHttpRequest();
+    const reqUrl = "https://api.github.com/users/roshan-jha-23";
+    xhr.open('GET', reqUrl);
+
+    const cardContainer = document.createElement('div');
+    cardContainer.classList.add('card');
+
+    const h2 = document.createElement("h2");
+    const pFollowers = document.createElement("p");
+    const pBio = document.createElement("p");
+    const imgAvatar = document.createElement("img");
+    const nameofuser=document.createElement("p");
+    const twitterprofile=document.createElement("p");
+    imgAvatar.setAttribute("id", "image");
+    h2.textContent = "GitHub Profile";
+
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                let data = JSON.parse(xhr.responseText);
+                // Add user's name to header
+                nameofuser.textContent=data.name;
+                imgAvatar.src = data.avatar_url;
+               twitterprofile.innerHTML = `<a href="https://twitter.com/${data.twitter_username}" target="_blank" style="text-decoration: none; color: inherit;">${data.twitter_username}</a>`;
+
+                pFollowers.textContent = `Followers: ${data.followers}`;
+                pBio.textContent = `Bio: ${data.bio || "No bio available"}`;
+            } else {
+                console.error("Error fetching data from GitHub API");
+            }
+        }
+    };
+
+    xhr.send();
+    cardContainer.appendChild(nameofuser);
+    cardContainer.appendChild(h2);
+    cardContainer.appendChild(imgAvatar);
+    cardContainer.appendChild(pFollowers);
+    cardContainer.appendChild(twitterprofile);
+    cardContainer.appendChild(pBio);
+
+    document.body.appendChild(cardContainer);
+</script>
+</html>
