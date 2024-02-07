@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #414141; color: white;">
+    <ul id="images">
+        <li><img src="https://www.pexels.com/photo/woman-holding-pink-tulips-1386604/" id="pic1" alt="photoshop"></li>
+        <li><img src="https://www.pexels.com/photo/woman-wearing-black-tank-top-157606" id="pic2" alt="pic2"></li>
+        <li><img src="https://www.pexels.com/photo/photography-of-woman-wearing-santa-hat-776552/" id="pic3" alt=""></li>
+        <li><img src="https://www.pexels.com/photo/woman-looking-at-her-right-side-1777689/" id="pic3" alt=""></li>
+        <li><a id="google" style="color: aliceblue;" href="https://www.google.com">Google</a></li>
+    </ul>
+</body>
+<script>
+//     // document.getElementById('pic1').onclick=()=>{
+//     //     alert("This is a picture of me when I was 5 years old.");
+//     // }
+//      //attachEveent()
+//     //jQuery -oneventlistener
+//      //types,timestamp,defaultPreventd
+//     //target,toElement,srcElement,currTraget
+//     //client x,client y,screen x,screen y
+//     //altkey,ctrlKey,shiftKey,keyCode
+//     document.getElementById('pic1').addEventListener('click',(e)=>{
+//         console.log("clicked inside the ul");
+//     },false)
+   
+//     document.getElementById('pic2').addEventListener('click',(e)=>{
+//         console.log("clicked inside the pic2");
+//         e.stopPropagation( );//stops the event from bubbling up to parent elements
+//     },true)
+//     //2 tarah ke event hote hai ek event bubbling and ek hota hai event capturing 
+//     //bubbling : from small to large , light travels through air
+//     //capturing : from large to small , heavy travels through air
+   
+//    document.getElementById('google').addEventListener( 'click' , (e)=>{
+//     console.log( "Clicked on google link." ) ;
+//     e.stopPropagation();
+//     e.preventDefault();
+
+//    },false)
+
+document.querySelector('#images').addEventListener('click',(e)=>{
+    e.preventDefault()
+     console.log(e.target.parentNode);
+     let removeIt=e.target.parentNode
+    //  removeIt.parentNode.removeChild(removeIt)
+    if(e.target.tagName==='IMG'){
+  removeIt.remove()
+    }
+   
+
+},false)
+
+</script>
+</html>
