@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>closure </title>
+</head>
+<body>
+     <button id="orange">orange</button>
+     <button id="green">green</button>
+</body>
+<script>
+    // function init(){
+    //     let name="roshyan";
+    //     function displayName(){
+    //         console.log(name);
+    //     }
+    //     displayName();
+    // }
+    // init();
+    // function outer(){
+    //     let name="hey there"
+    //     function inner(){
+    //         console.log(name);//here it will be avialable
+    //     }
+    //     inner();
+    // }
+    // console.log(name);will not be avilable
+
+
+    //closure=>when a function is returned from another function and that returned function can access variables from the parent function even
+    const counter = () => {
+        let count = 0;
+        return () => count++;
+    };
+
+    const increment = counter();
+    console.log(increment()); // Outputs: 0
+    console.log(increment()); // Outputs: 1
+    console.log(increment()); // Outputs: 2
+
+</script>
+<script>
+// document.body.querySelector( '#orange' ).onclick = ()=>{
+//     document.body.style.backgroundColor="orange";
+// }
+// document.body.querySelector( '#green' ).onclick = ()=>{
+//     document.body.style.backgroundColor="green";
+// }
+
+ function clickHandler(color){
+    //  document.body.style.backgroundColor=`${color}`;
+
+    return function(){
+        document.body.style.backgroundColor=`${color}`;
+     }
+ }
+ document.getElementById('orange').addEventListener("click",()=>clickHandler("orange"));
+
+</script>
+</html>
